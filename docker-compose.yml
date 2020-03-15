@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  web:
+    image: ruby:2.0.0-slim
+    container_name: ruby2
+    tty: true
+    volumes:
+      - ./cp345:/cp345
+  
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dennisoliveira/rails4
+    container_name: ruby2rails4-app
+    tty: true
+    volumes:
+      - ./app:/app
