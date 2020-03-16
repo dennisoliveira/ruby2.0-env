@@ -17,3 +17,13 @@ services:
     tty: true
     volumes:
       - ./app:/app
+    networks:
+      default:
+        ipv4_address: 172.31.0.2
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.31.0.0/24

@@ -1,10 +1,14 @@
-FROM ruby:2.0.0-slim
+FROM ruby:2.5.0-slim
 
 RUN apt-get update && \
-  apt-get install -y sqlite3 libsqlite3-dev build-essential && \
+  apt-get install -y sqlite3 libsqlite3-dev build-essential nodejs && \
   apt-get clean
 
-RUN mkdir app && chown -R 1000:1000 /app
+RUN gem install rails -v=4.2.10
+# gem 'sqlite3', '~> 1.3.0'
+
+RUN mkdir app
 WORKDIR /app
 
-RUN gem install rails -v=4.0.0
+EXPOSE 80
+EXPOSE 3000
